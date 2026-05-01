@@ -29,6 +29,8 @@ class CameraManager: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleB
 
     var onFrameUpdate: ((CVPixelBuffer) -> Void)?
 
+    private let frameProcessingQueueLabel = "com.riddimsoftware.nether.camera.frame"
+
     override init() {
         super.init()
         checkPermission()
@@ -101,7 +103,7 @@ class CameraManager: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleB
     }
     
     /// Checks for camera permissions and sets up the session if authorized.
-    func checkPermission() {
+    private func checkPermission() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
             setupSession()
@@ -119,7 +121,7 @@ class CameraManager: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleB
     }
     
     /// Configures and starts the AVCaptureSession.
-    func setupSession() {
+    private func setupSession() {
         session.beginConfiguration()
         
         let device = AVCaptureDevice.default(.builtInUltraWideCamera, for: .video, position: .back) ??
@@ -143,7 +145,7 @@ class CameraManager: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleB
             }
             
             let videoOutput = AVCaptureVideoDataOutput()
-            videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "camera.frame.processing"))
+            videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: frameProcessingQueueLabel))
             if session.canAddOutput(videoOutput) {
                 session.addOutput(videoOutput)
             }
