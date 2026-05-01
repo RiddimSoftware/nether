@@ -2,6 +2,7 @@ import SwiftUI
 import AVFoundation
 import Combine
 import ImageIO
+import QuartzCore
 
 /// Manages the camera session, device selection, and orientation tracking.
 class CameraManager: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBufferDelegate {
@@ -12,6 +13,9 @@ class CameraManager: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleB
 
     private var rotationCoordinator: AVCaptureDevice.RotationCoordinator?
     private var rotationObservation: NSKeyValueObservation?
+
+    private var lastFrameTime: CFTimeInterval = 0
+    private let frameInterval: CFTimeInterval = 1.0 / 15.0  // 15 fps cap
 
     var currentCameraLabel: String {
         guard let device = currentDevice else { return "1x" }
@@ -69,6 +73,9 @@ class CameraManager: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleB
 
     /// AVCaptureVideoDataOutputSampleBufferDelegate method called when a new video frame is captured.
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        let now = CACurrentMediaTime()
+        guard now - lastFrameTime >= frameInterval else { return }
+        lastFrameTime = now
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         onFrameUpdate?(pixelBuffer)
     }
