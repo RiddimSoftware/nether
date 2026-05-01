@@ -1,0 +1,5 @@
+import_from_git(
+  url:    "https://github.com/RiddimSoftware/riddim-release.git",
+  branch: "v1",
+  path:   "fastlane/Fastfile"
+)

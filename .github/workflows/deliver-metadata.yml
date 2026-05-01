@@ -1,0 +1,23 @@
+name: Deliver Metadata
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ios/fastlane/metadata/**'
+      - 'ios/fastlane/screenshots/**'
+      - 'ios/fastlane/Deliverfile'
+  workflow_dispatch:
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  call:
+    uses: RiddimSoftware/riddim-release/.github/workflows/deliver-metadata.yml@v1
+    with:
+      ios_workdir:         ${{ vars.IOS_WORKDIR || 'ios' }}
+      bundle_id:           ${{ vars.BUNDLE_ID }}
+      team_id:             ${{ vars.TEAM_ID }}
+      runner_labels_mac:   ${{ vars.RUNNER_LABELS_MAC }}
+      runner_labels_linux: ${{ vars.RUNNER_LABELS_LINUX }}
+      force_self_hosted:   false
+    secrets: inherit
