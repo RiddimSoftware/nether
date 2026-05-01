@@ -14,6 +14,9 @@ struct ContentView: View {
     @StateObject private var detectionManager = DetectionManager()
     private let audioService = AudioService()
 
+    private let soundName = "nether"
+    private let soundExt = "m4a"
+
     var body: some View {
         GeometryReader { screenGeometry in
             let screenWidth = screenGeometry.size.width
@@ -45,7 +48,7 @@ struct ContentView: View {
             }
             .onChange(of: detectionManager.isHumanDetected) { oldValue, newValue in
                 if newValue && !oldValue {
-                    audioService.playSound(named: "nether", extension: "m4a")
+                    audioService.playSound(named: soundName, extension: soundExt)
                 }
             }
             .padding(.vertical, 50)
