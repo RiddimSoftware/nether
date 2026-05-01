@@ -41,32 +41,18 @@ class DetectionManager: ObservableObject {
         }
     }
     
+    private func anyJoint(_ joints: [VNHumanBodyPoseObservation.JointName], inZone zone: CGRect, observation: VNHumanBodyPoseObservation) -> Bool {
+        joints.contains { joint in
+            guard let point = try? observation.recognizedPoint(joint), point.confidence > 0.3 else { return false }
+            let normalized = CGPoint(x: point.location.x, y: 1.0 - point.location.y)
+            return zone.contains(normalized)
+        }
+    }
+
     private func isObservationInZone(_ observation: VNHumanBodyPoseObservation) -> Bool {
         let headJoints: [VNHumanBodyPoseObservation.JointName] = [.nose, .leftEye, .rightEye, .leftEar, .rightEar]
         let footJoints: [VNHumanBodyPoseObservation.JointName] = [.leftAnkle, .rightAnkle]
-        
-        var headInZone = false
-        for joint in headJoints {
-            if let point = try? observation.recognizedPoint(joint), point.confidence > 0.3 {
-                let normalizedPoint = CGPoint(x: point.location.x, y: 1.0 - point.location.y)
-                if detectionZone.contains(normalizedPoint) {
-                    headInZone = true
-                    break
-                }
-            }
-        }
-        
-        var feetInZone = false
-        for joint in footJoints {
-            if let point = try? observation.recognizedPoint(joint), point.confidence > 0.3 {
-                let normalizedPoint = CGPoint(x: point.location.x, y: 1.0 - point.location.y)
-                if detectionZone.contains(normalizedPoint) {
-                    feetInZone = true
-                    break
-                }
-            }
-        }
-        
-        return headInZone && feetInZone
+        return anyJoint(headJoints, inZone: detectionZone, observation: observation)
+            && anyJoint(footJoints, inZone: detectionZone, observation: observation)
     }
 }
