@@ -6,8 +6,24 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B10000010000000000001001 /* DetectionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000010000000000001002 /* DetectionManagerTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B10000010000000000002001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A30DD1DE2F2D344000A16340 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A30DD1E52F2D344000A16340;
+			remoteInfo = Nether;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		A30DD1E62F2D344000A16340 /* Nether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nether.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10000010000000000001003 /* NetherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10000010000000000001002 /* DetectionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -26,6 +42,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B10000010000000000003001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				A30DD1E82F2D344000A16340 /* Nether */,
+				B10000010000000000004001 /* NetherTests */,
 				A30DD1E72F2D344000A16340 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +65,17 @@
 			isa = PBXGroup;
 			children = (
 				A30DD1E62F2D344000A16340 /* Nether.app */,
+				B10000010000000000001003 /* NetherTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B10000010000000000004001 /* NetherTests */ = {
+			isa = PBXGroup;
+			children = (
+				B10000010000000000001002 /* DetectionManagerTests.swift */,
+			);
+			path = NetherTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -70,6 +103,23 @@
 			productReference = A30DD1E62F2D344000A16340 /* Nether.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B10000010000000000005001 /* NetherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B10000010000000000006001 /* Build configuration list for PBXNativeTarget "NetherTests" */;
+			buildPhases = (
+				B10000010000000000003002 /* Sources */,
+				B10000010000000000003001 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B10000010000000000002002 /* PBXTargetDependency */,
+			);
+			name = NetherTests;
+			productName = NetherTests;
+			productReference = B10000010000000000001003 /* NetherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +132,10 @@
 				TargetAttributes = {
 					A30DD1E52F2D344000A16340 = {
 						CreatedOnToolsVersion = 26.1;
+					};
+					B10000010000000000005001 = {
+						CreatedOnToolsVersion = 26.1;
+						TestTargetID = A30DD1E52F2D344000A16340;
 					};
 				};
 			};
@@ -100,6 +154,7 @@
 			projectRoot = "";
 			targets = (
 				A30DD1E52F2D344000A16340 /* Nether */,
+				B10000010000000000005001 /* NetherTests */,
 			);
 		};
 /* End PBXProject section */
@@ -122,7 +177,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B10000010000000000003002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10000010000000000001001 /* DetectionManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B10000010000000000002002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A30DD1E52F2D344000A16340 /* Nether */;
+			targetProxy = B10000010000000000002001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A30DD1EF2F2D344100A16340 /* Debug */ = {
@@ -320,6 +391,48 @@
 			};
 			name = Release;
 		};
+		B10000010000000000006002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZG82TFXU3C;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.riddimsoftware.NetherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nether.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Nether";
+			};
+			name = Debug;
+		};
+		B10000010000000000006003 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZG82TFXU3C;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.riddimsoftware.NetherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nether.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Nether";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -337,6 +450,15 @@
 			buildConfigurations = (
 				A30DD1F22F2D344100A16340 /* Debug */,
 				A30DD1F32F2D344100A16340 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B10000010000000000006001 /* Build configuration list for PBXNativeTarget "NetherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B10000010000000000006002 /* Debug */,
+				B10000010000000000006003 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
