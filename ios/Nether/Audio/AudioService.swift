@@ -12,7 +12,14 @@ protocol AudioServiceProtocol {
 /// A service responsible for handling audio playback.
 class AudioService: AudioServiceProtocol {
     private var audioPlayer: AVAudioPlayer?
-    
+    private let bundle: Bundle
+
+    /// Creates an AudioService.
+    /// - Parameter bundle: The bundle used to locate sound resources. Defaults to `.main`.
+    init(bundle: Bundle = .main) {
+        self.bundle = bundle
+    }
+
     /// Plays a sound file with the given name and extension.
     /// - Parameters:
     ///   - name: The name of the sound file.
@@ -21,8 +28,8 @@ class AudioService: AudioServiceProtocol {
         if let player = audioPlayer, player.isPlaying {
             return
         }
-        
-        guard let url = Bundle.main.url(forResource: name, withExtension: ext) else { return }
+
+        guard let url = bundle.url(forResource: name, withExtension: ext) else { return }
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
             audioPlayer?.play()
