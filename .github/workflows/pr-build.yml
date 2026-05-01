@@ -1,0 +1,14 @@
+name: PR Build
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  call:
+    uses: RiddimSoftware/riddim-release/.github/workflows/pr-build.yml@main
+    with:
+      scheme:            ${{ vars.SCHEME }}
+      project:           ${{ vars.XCODEPROJ_PATH }}
+      working_directory: ${{ vars.IOS_WORKDIR || 'ios' }}
+      runner_labels:     ${{ vars.RUNNER_LABELS_MAC || '["macos-15"]' }}

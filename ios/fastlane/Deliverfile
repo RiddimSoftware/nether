@@ -1,0 +1,10 @@
+app_identifier "com.riddimsoftware.Nether"
+team_id "ZG82TFXU3C"
+api_key_path "/tmp/asc_api_key.json"
+metadata_path "./fastlane/metadata"
+screenshots_path "./fastlane/screenshots"
+skip_screenshots true
+run_precheck_before_submit false
+precheck_include_in_app_purchases false
+automatic_release false
+phased_release false
