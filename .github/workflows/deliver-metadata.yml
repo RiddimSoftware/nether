@@ -1,12 +1,12 @@
 name: Deliver Metadata
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths:
       - 'ios/fastlane/metadata/**'
       - 'ios/fastlane/screenshots/**'
       - 'ios/fastlane/Deliverfile'
-  workflow_dispatch:
 permissions:
   contents: read
   id-token: write
