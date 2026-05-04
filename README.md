@@ -1,6 +1,6 @@
-# Nether
+# Portal Door
 
-Nether is an iOS app that turns any doorway into a Minecraft Nether Portal.
+Portal Door is an iOS app that turns any doorway into a Minecraft Nether Portal.
 
 ## Frameworks
 

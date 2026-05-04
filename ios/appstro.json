@@ -1,7 +1,7 @@
 {
   "app_path" : ".",
   "bundle_identifier" : "com.riddimsoftware.Nether",
-  "description" : "Transform any doorway into a Nether Portal with Nether! Simply point your camera, adjust the rectangle to frame your doorway, and prepare for the iconic sound effect every time someone passes through. Bring the fun of Minecraft to your real world!",
+  "description" : "Transform any doorway into a Nether Portal with Portal Door! Simply point your camera, adjust the rectangle to frame your doorway, and prepare for the iconic sound effect every time someone passes through. Bring the fun of Minecraft to your real world!",
   "keywords" : [
     "minecraft",
     "nether portal",
@@ -12,6 +12,6 @@
     "fun",
     "portal"
   ],
-  "name" : "Nether",
+  "name" : "Portal Door",
   "team_id" : "ZG82TFXU3C"
 }
