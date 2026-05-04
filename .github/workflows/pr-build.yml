@@ -1,14 +1,23 @@
-name: PR Build
+name: CI
 on:
   pull_request:
     branches: [main]
 permissions:
   contents: read
 jobs:
-  call:
+  build:
     uses: RiddimSoftware/riddim-release/.github/workflows/pr-build.yml@main
     with:
       scheme:            ${{ vars.SCHEME }}
       project:           ${{ vars.XCODEPROJ_PATH }}
       working_directory: ${{ vars.IOS_WORKDIR || 'ios' }}
       runner_labels:     ${{ vars.RUNNER_LABELS_MAC || '["macos-15"]' }}
+  success:
+    needs: [build]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - run: |
+          if [ "${{ needs.build.result }}" != "success" ]; then
+            exit 1
+          fi
